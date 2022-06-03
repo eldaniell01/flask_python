@@ -1,0 +1,5 @@
+flask
+Flask-Bootstrap4
+Flask-BS4
+flask-wtf
+flask-testing

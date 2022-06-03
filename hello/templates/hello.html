@@ -1,0 +1,43 @@
+{%extends 'index.html'%}
+{%import 'macros.html' as macros%}
+{%import 'bootstrap/wtf.html' as wtf %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%block title%}
+    {{super()}}
+        bienvenidada
+    {%endblock%}
+    {%block content %}
+        {%if username%}
+            <h1>bienevenido {{username}}</h1>
+        {%endif%}
+        <h1>hola mundo, la ip es{{user_ip}}</h1>
+        {%if user_ip %}
+            <h1>hola mundo, la ip es{{user_ip}}</h1>
+        {%else %}
+            <a href="{{url_for('index')}}">ir a inicio</a>
+        {%endif%}
+        <div class="container">
+            <form action="{{url_for('hello')}}" method="POST">
+                {{login.username}}
+                {{login.username.label}}
+            </form>
+            {{wtf.quick_form(login)}}
+        </div>
+        <ul>
+            {%for tarea in tareas%}
+                {{macros.render_tareas(tarea)}}
+            {%endfor%}
+        </ul>
+    {%endblock%}
+</body>
+</html>
